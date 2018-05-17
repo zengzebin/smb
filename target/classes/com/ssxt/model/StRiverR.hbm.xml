@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-22 14:50:58 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping package="com.ssxt.model">
+    <class name="StRiverR" table="ST_RIVER_R" catalog="rainwater" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="stcd" type="string">
+            <column name="STCD" length="8">
+             </column>
+        </property>
+        <property name="tm" type="timestamp">
+            <column name="TM" length="19">
+             </column>
+        </property>
+        <property name="z" type="big_decimal">
+            <column name="Z" precision="7" scale="3">
+             </column>
+        </property>
+        <property name="q" type="big_decimal">
+            <column name="Q" precision="9" scale="3">
+             </column>
+        </property>
+        <property name="wptn" type="string">
+            <column name="WPTN" length="1">
+             </column>
+        </property>
+<!--         <property name="xsa" type="big_decimal"> -->
+<!--             <column name="XSA" precision="9" scale="3"> -->
+<!--              </column> -->
+<!--         </property> -->
+<!--         <property name="xsavv" type="big_decimal"> -->
+<!--             <column name="XSAVV" precision="5" scale="3"> -->
+<!--              </column> -->
+<!--         </property> -->
+<!--         <property name="xsmxv" type="big_decimal"> -->
+<!--             <column name="XSMXV" precision="5" scale="3"> -->
+<!--              </column> -->
+<!--         </property> -->
+<!--         <property name="flwchrcd" type="string"> -->
+<!--             <column name="FLWCHRCD" length="1"> -->
+<!--              </column> -->
+<!--         </property> -->
+<!--         <property name="msqmt" type="string"> -->
+<!--             <column name="MSQMT" length="1"> -->
+<!--              </column> -->
+<!--         </property> -->
+<!--         <property name="msamt" type="string"> -->
+<!--             <column name="MSAMT" length="1"> -->
+<!--              </column> -->
+<!--         </property> -->
+<!--         <property name="msvmt" type="string"> -->
+<!--             <column name="MSVMT" length="1"> -->
+<!--              </column> -->
+<!--         </property> -->
+        <property name="addTime" type="timestamp">
+            <column name="addTime" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

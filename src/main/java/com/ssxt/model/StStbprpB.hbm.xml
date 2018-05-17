@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-1-15 15:31:32 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping  package="com.ssxt.model">
+    <class name="StStbprpB" table="ST_STBPRP_B" catalog="rainwater" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+      
+<!--       <many-to-one name="groups" class="Groups" fetch="select" property-ref="code"> -->
+<!--             <column name="ADDVCD" not-null="true"> -->
+<!--              </column> -->
+<!--         </many-to-one> -->
+        
+        <property name="addvcd" type="string">
+            <column name="ADDVCD" length="6">
+             </column>
+        </property>
+        
+         <many-to-one name="stcdtype" class="StcdType" fetch="select"  property-ref="type">
+            <column name="STTP" not-null="true">
+             </column>
+        </many-to-one>
+        <!-- 
+          <property name="sttp" type="string">
+            <column name="STTP" length="2">
+             </column>
+        </property>
+         -->
+          
+        
+        <property name="stcd" type="string">
+            <column name="STCD" length="8">
+             </column>
+        </property>
+        <property name="stmn" type="string">
+            <column name="STMN" length="30">
+             </column>
+        </property>
+        <property name="rvnm" type="string">
+            <column name="RVNM" length="30">
+             </column>
+        </property>
+        <property name="hnnm" type="string">
+            <column name="HNNM" length="16">
+             </column>
+        </property>
+        <property name="bsnm" type="string">
+            <column name="BSNM" length="30">
+             </column>
+        </property>
+        <property name="lgtd" type="big_decimal">
+            <column name="LGTD" precision="10" scale="6">
+             </column>
+        </property>
+        <property name="lttd" type="big_decimal">
+            <column name="LTTD" precision="10" scale="6">
+             </column>
+        </property>
+        <property name="stlc" type="string">
+            <column name="STLC" length="50">
+             </column>
+        </property>
+     
+        <property name="dtmnm" type="string">
+            <column name="DTMNM" length="16">
+             </column>
+        </property>
+        <property name="dtmel" type="big_decimal">
+            <column name="DTMEL" precision="7" scale="3">
+             </column>
+        </property>
+      
+        <property name="frgrd" type="string">
+            <column name="FRGRD" length="1">
+             </column>
+        </property>
+        <property name="bgfrym" type="string">
+            <column name="BGFRYM" length="6">
+             </column>
+        </property>
+        <property name="admauth" type="string">
+            <column name="ADMAUTH" length="20">
+             </column>
+        </property>
+        <property name="stbk" type="string">
+            <column name="STBK" length="1">
+             </column>
+        </property>
+        <property name="drna" type="java.lang.Integer">
+            <column name="DRNA" precision="7" scale="0">
+             </column>
+        </property>
+        <property name="dstrvm" type="big_decimal">
+            <column name="DSTRVM" precision="6" scale="1">
+             </column>
+        </property>
+        <property name="usfl" type="string">
+            <column name="USFL" length="1">
+             </column>
+        </property>
+        <property name="phcd" type="string">
+            <column name="PHCD" length="6">
+             </column>
+        </property>
+        <property name="dtpr" type="big_decimal">
+            <column name="DTPR" precision="7" scale="3">
+             </column>
+        </property>
+        <property name="esstym" type="string">
+            <column name="ESSTYM" length="6">
+             </column>
+        </property>
+        <property name="atcunit" type="string">
+            <column name="ATCUNIT" length="20">
+             </column>
+        </property>
+        <property name="locality" type="string">
+            <column name="LOCALITY" length="10">
+             </column>
+        </property>
+        <property name="stazt" type="java.lang.Long">
+            <column name="STAZT" precision="10" scale="0">
+             </column>
+        </property>
+        <property name="comments" type="string">
+            <column name="COMMENTS" length="50">
+             </column>
+        </property>
+        <property name="moditime" type="timestamp">
+            <column name="MODITIME" length="19">
+             </column>
+        </property>
+    </class>
+</hibernate-mapping>

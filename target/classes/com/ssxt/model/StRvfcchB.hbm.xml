@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-22 14:50:58 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping package="com.ssxt.model">
+    <class name="StRvfcchB" table="ST_RVFCCH_B" catalog="rainwater" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="stcd" type="string">
+            <column name="STCD" length="8">
+             </column>
+        </property>
+        <property name="wrz" type="big_decimal">
+            <column name="WRZ" precision="7" scale="3">
+             </column>
+        </property>
+        <property name="moditime" type="timestamp">
+            <column name="MODITIME" length="19">
+             </column>
+        </property>
+    </class>
+</hibernate-mapping>

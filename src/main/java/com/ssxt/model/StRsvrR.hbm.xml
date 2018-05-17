@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-1 14:07:13 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping package="com.ssxt.model">
+    <class name="StRsvrR" table="ST_RSVR_R" catalog="rainwater" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="stcd" type="string">
+            <column name="STCD" length="8">
+                <comment>&#178;&#226;&#213;&#190;&#177;&#224;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="tm" type="timestamp">
+            <column name="TM" length="19">
+                <comment>&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+        <property name="rz" type="big_decimal">
+            <column name="RZ" precision="7" scale="3">
+                <comment>&#191;&#226;&#201;&#207;&#203;&#174;&#206;&#187;</comment>
+            </column>
+        </property>
+        <property name="w" type="big_decimal">
+            <column name="W" precision="9" scale="3">
+                <comment>&#208;&#238;&#203;&#174;&#193;&#191;</comment>
+            </column>
+        </property>
+        <property name="inq" type="big_decimal">
+            <column name="INQ" precision="9" scale="3">
+                <comment>&#200;&#235;&#191;&#226;&#193;&#247;&#193;&#191;</comment>
+            </column>
+        </property>
+        <property name="rwptn" type="string">
+            <column name="RWPTN" length="2">
+                <comment>&#203;&#174;&#202;&#198;</comment>
+            </column>
+        </property>
+        <property name="rsvrName" type="string">
+            <column name="RsvrName" length="10">
+                <comment>&#203;&#174;&#191;&#226;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="altitude" type="big_decimal">
+            <column name="Altitude" precision="9" scale="3">
+                <comment>&#184;&#223;&#179;&#204;</comment>
+            </column>
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="addTime" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

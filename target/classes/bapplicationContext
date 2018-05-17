@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+    
+    <!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
+    <aop:aspectj-autoproxy/>
+<!--     <context:component-scan base-package="com.smart.power"/> -->
+  <context:component-scan base-package="com.ssxt.dao.Impl"/>  
+     <context:component-scan base-package="com.ssxt.service.Impl"/>  
+      
+      
+       	
+   	
+<!--   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close"> -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" 
+		p:driverClassName="com.mysql.jdbc.Driver"
+		p:url="jdbc:mysql://183.232.33.177:3306/testing?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf8"
+		p:username="rainwater"
+		p:password="zzb11231l11l"  >
+	</bean>
+<!--   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> -->
+<!-- 		<property name="driverClass" value="com.mysql.jdbc.Driver"/> -->
+<!-- 	   <property name="jdbcUrl" value="jdbc:mysql://183.232.33.177:3306/rainwater?useUnicode=true&amp;characterEncoding=UTF-8"/> -->
+<!--         <property name="user" value="rainwater"/> -->
+<!--         <property name="password" value="zzb11231l11l"/> -->
+<!-- 		 <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/rainwater?useUnicode=true&amp;characterEncoding=UTF-8"/> -->
+<!--         <property name="user" value="root"/> -->
+<!--         <property name="password" value="123456"/> -->
+<!--    	请求超时时间 -->
+<!-- <!--连接池用完时客户调用getConnection()后等待获取连接的时间，单位：毫秒。超时后会抛出-->    
+<!--  <!--SQLEXCEPTION，如果设置0，则无限等待。Default:0-->   
+<!--  		<property name="checkoutTimeout" value="30000" /> -->
+<!-- 		 <property name="maxStatements" value="0"/>   -->
+<!-- 		<!-- 每60秒检查所有连接池中的空闲连接。默认值: 0，不检查 -->  
+<!-- 		<property name="idleConnectionTestPeriod" value="30" /> -->
+<!-- 		<!-- 连接数据库连接池最大空闲时间 -->  
+<!-- 		<property name="maxIdleTime" value="300" /> -->
+<!-- 		<!-- 连接池初始化连接数 -->  
+<!-- 		<property name="initialPoolSize" value="5" /> -->
+<!-- 		<property name="minPoolSize" value="5" /> -->
+<!-- 		<property name="maxPoolSize" value="20" /> -->
+<!-- 		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。默认值: 3 -->  
+<!-- <!-- 		<property name="acquireIncrement" value="5" /> -->  
+<!--     </bean> -->
+
+	<!-- spring接管Hibernate的s-essionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	    <property name="mappingResources">  
+         <list>  
+          <value>com/ssxt/model/Groups.hbm.xml</value>
+          <value>com/ssxt/model/StStbprpB.hbm.xml</value>
+          <value>com/ssxt/model/StType.hbm.xml</value>
+             <value>com/ssxt/model/StPptnR.hbm.xml</value>
+         </list>   
+    </property>   
+		<property name="hibernateProperties">
+			<props>
+		   <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+			
+ 				<!-- 显示Hibernate持久化操作所生成的SQL -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 将SQL脚本进行格式化后再输出 -->
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	  	<!-- spring提供的hibernate工具包 -->
+	  <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	
+	
+		<!--spring接管Hibernate的事务 定义事务管理器（声明式的事务） -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+<!-- 	<tx:advice id="txAdvice" transaction-manager="txManager"> -->
+<!-- 		<tx:attributes> -->
+<!-- 			<tx:method name="save*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="add*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="del*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="update*" propagation="REQUIRED" /> -->
+<!-- 			<tx:method name="*" read-only="false" /> -->
+<!-- 		</tx:attributes> -->
+<!-- 	</tx:advice> -->
+
+<!-- 	<aop:config>对事务进行切面拦截 -->
+<!-- 		<aop:pointcut id="interceptorPointCuts" -->
+<!-- 			expression="execution(* com.ssxt.service.Impl..*.*(..))" /> -->
+<!-- 		<aop:advisor advice-ref="txAdvice" pointcut-ref="interceptorPointCuts" /> -->
+<!-- 	</aop:config> -->
+	
+	 
+	<!-- sping mvc 统一收集错误信息 -->
+	 <bean id="exceptionResolver" class="zym.common.MyExceptionHandler"/>  
+    
+    
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="1000000"/>
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+    <bean id="lobHandler"
+          class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+          lazy-init="true" />
+          
+    
+          
+<!-- 	<bean id="transactionManager"  -->
+<!-- 		class="org.springframework.orm.hibernate3.HibernateTransactionManager"> -->
+<!-- 		<property name="sessionFactory"> -->
+<!-- 		      <ref bean="sessionFactory"/> -->
+<!-- 		</property> -->
+<!-- 	</bean>		 -->
+
+    <!--p:mappingDirectoryLocations="classpath:/com/smart/domain"-->
+    
+    
+   
+  
+</beans>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-2-4 14:25:03 by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping package="com.ssxt.model">
+    <class name="StPptnRNew" table="ST_PPTN_R_NEW" catalog="rainwater" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="stcd" type="string">
+            <column name="STCD" length="8">
+                <comment>&#178;&#226;&#213;&#190;&#177;&#224;&#194;&#235;</comment>
+            </column>
+        </property>
+        <property name="stmn" type="string">
+            <column name="STMN" length="8">
+                <comment>&#178;&#226;&#213;&#190;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="rvnm" type="string">
+            <column name="RVNM" length="8">
+                <comment>&#186;&#211;&#193;&#247;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="bsnm" type="string">
+            <column name="BSNM" length="8">
+                <comment>&#193;&#247;&#211;&#242;&#195;&#251;&#179;&#198;</comment>
+            </column>
+        </property>
+        <property name="addvcd" type="string">
+            <column name="ADDVCD" length="8">
+                <comment>&#208;&#208;&#213;&#254;&#199;&#248;</comment>
+            </column>
+        </property>
+        <property name="tm" type="timestamp">
+            <column name="TM" length="19">
+                <comment>&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+<!--         <property name="drp" type="big_decimal"> -->
+<!--             <column name="DRP" precision="5" scale="1"> -->
+<!--                 <comment>&#202;&#177;&#182;&#206;&#189;&#181;&#203;&#174;&#193;&#191;</comment> -->
+<!--             </column> -->
+<!--         </property> -->
+<!--         <property name="intv" type="big_decimal"> -->
+<!--             <column name="INTV" precision="5"> -->
+<!--                 <comment>&#202;&#177;&#182;&#206;&#179;&#164;</comment> -->
+<!--             </column> -->
+<!--         </property> -->
+<!--         <property name="pdr" type="big_decimal"> -->
+<!--             <column name="PDR" precision="5"> -->
+<!--                 <comment>&#189;&#181;&#203;&#174;&#192;&#250;&#202;&#177;</comment> -->
+<!--             </column> -->
+<!--         </property> -->
+        <property name="dyp" type="big_decimal">
+            <column name="DYP" precision="5" scale="1">
+                <comment>DYP</comment>
+            </column>
+        </property>
+        <property name="wth" type="java.lang.Character">
+            <column name="WTH" length="1">
+                <comment>&#204;&#236;&#198;&#248;&#215;&#180;&#191;&#246;</comment>
+            </column>
+        </property>
+        <property name="addTime" type="timestamp">
+            <column name="addTime" length="19">
+                <comment>&#204;&#237;&#188;&#211;&#202;&#177;&#188;&#228;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>
